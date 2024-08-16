@@ -1,13 +1,48 @@
-import React from "react";
+import React, { useContext } from "react";
+// import { useForm } from "react-hook-form";
+import { AuthContext } from "../Providers/AuthProvider";
+import { updateProfile } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const handleRegister = (e) => {
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   watch,
+  //   reset,
+  //   formState: { errors },
+  // } = useForm();
+  const { createUser, auth } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handelRegister = (e) => {
     e.preventDefault();
-    const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(email, password);
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    // user register
+    createUser(email, password)
+      .then(() => {
+        alert("successful");
+        updateProfile(auth.currentUser, { displayName: name });
+        navigate("/home");
+      })
+      .catch(() => {
+        alert("error");
+      });
+
+    e.target.reset();
   };
+
+  // const handleRegister = (e) => {
+  //   e.preventDefault();
+  //   const form = e.target;
+  //   const name = form.name.value;
+  //   const email = form.email.value;
+  //   const password = form.password.value;
+  //   console.log(email, password);
+  // };
   return (
     <div>
       <div className="hero bg-base-200 min-h-screen">
@@ -16,7 +51,22 @@ const Register = () => {
             <h1 className="text-5xl font-bold">Register now!</h1>
           </div>
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-            <form onSubmit={handleRegister} className="card-body">
+            <form onSubmit={handelRegister} className="card-body">
+              {/* name */}
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Your Name</span>
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  // {...register("name")}
+                  placeholder="Your Name"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              {/* email */}
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -24,11 +74,13 @@ const Register = () => {
                 <input
                   type="email"
                   name="email"
+                  // {...register("email")}
                   placeholder="email"
                   className="input input-bordered"
                   required
                 />
               </div>
+              {/* password */}
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
@@ -36,6 +88,7 @@ const Register = () => {
                 <input
                   type="password"
                   name="password"
+                  // {...register("password")}
                   placeholder="password"
                   className="input input-bordered"
                   required

@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from "./Main/Main";
 import Home from "./Home/Home";
 import Register from "./Register/Register";
+import Login from "./Login/Login";
+import AuthProvider from "./Providers/AuthProvider";
 
 const router = createBrowserRouter([
   {
@@ -19,12 +21,18 @@ const router = createBrowserRouter([
         path: "register",
         element: <Register></Register>,
       },
+      {
+        path: "login",
+        element: <Login></Login>,
+      },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );

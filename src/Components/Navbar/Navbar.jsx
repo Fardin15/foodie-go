@@ -30,7 +30,7 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="text-2xl font-semibold">FoodieGo</a>
       </div>
       <div className="flex-none">
         <div className="dropdown dropdown-end">
@@ -39,8 +39,10 @@ const Navbar = () => {
             role="button"
             className="btn btn-ghost btn-circle avatar"
           >
-            <div className="w-10 rounded-full">
-              <h1>{user ? user?.displayName.charAt(0) : "N/A"}</h1>
+            <div className="w-10 rounded-full bg-lime-400">
+              <h1 className="text-xl p-1">
+                {user ? user?.displayName.charAt(0).toUpperCase() : "N/A"}
+              </h1>
             </div>
           </div>
           <ul

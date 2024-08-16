@@ -16,6 +16,7 @@ const Home = () => {
   return (
     <div className="container max-w-6xl mx-auto">
       <Navbar></Navbar>
+      <h1 className="text-center text-xl font-medium">Our Menu</h1>
       <Products products={products}></Products>
       <Footer></Footer>
     </div>

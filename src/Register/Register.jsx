@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 // import { useForm } from "react-hook-form";
 import { AuthContext } from "../Providers/AuthProvider";
 import { updateProfile } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   // const {
@@ -24,7 +24,7 @@ const Register = () => {
     // user register
     createUser(email, password)
       .then(() => {
-        alert("successful");
+        alert("Registered Successfully");
         updateProfile(auth.currentUser, { displayName: name });
         navigate("/home");
       })
@@ -34,19 +34,10 @@ const Register = () => {
 
     e.target.reset();
   };
-
-  // const handleRegister = (e) => {
-  //   e.preventDefault();
-  //   const form = e.target;
-  //   const name = form.name.value;
-  //   const email = form.email.value;
-  //   const password = form.password.value;
-  //   console.log(email, password);
-  // };
   return (
     <div>
-      <div className="hero bg-base-200 min-h-screen">
-        <div className="hero-content flex-col lg:flex-row-reverse">
+      <div className="hero bg-base-200">
+        <div className="hero-content flex-col">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Register now!</h1>
           </div>
@@ -94,14 +85,20 @@ const Register = () => {
                   required
                 />
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
+                  <a
+                    href="#"
+                    className="text-center font-bold text-xl text-black"
+                  >
+                    Already have an account? Please{" "}
+                    <Link to="/" className="text-blue-500">
+                      Login
+                    </Link>
                   </a>
                 </label>
               </div>
               <div className="form-control mt-6">
                 <input
-                  className="btn btn-primary"
+                  className="btn btn-primary bg-slate-500"
                   type="submit"
                   value="Register"
                 />

@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
@@ -14,19 +15,18 @@ const Login = () => {
     signIn(email, password).then((result) => {
       const user = result.user;
       console.log(user);
-      // Swal.fire({
-      //   position: "top-end",
-      //   icon: "success",
-      //   title: "Logged in successfully",
-      //   showConfirmButton: false,
-      //   timer: 1500,
-      // });
+      navigate("/home");
+    });
+  };
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle().then((result) => {
       navigate("/home");
     });
   };
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
+    <div className="hero bg-base-200">
+      <div className="hero-content flex-col">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>
         </div>
@@ -57,16 +57,32 @@ const Login = () => {
                 className="input input-bordered"
                 required
               />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
             </div>
             <div className="form-control mt-6">
-              <input className="btn btn-primary" type="submit" value="Login" />
+              <input
+                className="btn btn-primary bg-slate-500"
+                type="submit"
+                value="Login"
+              />
             </div>
           </form>
+          <p className="text-center font-bold text-xl text-black">
+            <small>
+              New Here?{" "}
+              <Link to="/register" className="text-black">
+                Create an Account
+              </Link>
+            </small>
+          </p>
+          <p className="text-center font-medium text-[#444444] text-xl mt-3">
+            or sign in with
+          </p>
+          <button
+            onClick={handleGoogleSignIn}
+            className="btn font-semibold bg-slate-500 mt-3 text-xl"
+          >
+            <FaGoogle></FaGoogle>
+          </button>
         </div>
       </div>
     </div>

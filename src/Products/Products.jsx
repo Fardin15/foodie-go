@@ -24,16 +24,15 @@ const Products = () => {
   // };
 
   // function for category filter
-
-  // const handelSortBy = (e) => {
-  //   const sortBy = "price";
-  //   if (e.target.value === "price-asc") {
-  //     setSortBy({ sortBy: sortBy, order: "asc" });
-  //   }
-  //   if (e.target.value === "price-desc") {
-  //     setSortBy({ sortBy: sortBy, order: "desc" });
-  //   }
-  // };
+  const handelSortBy = (e) => {
+    const sortBy = "price";
+    if (e.target.value === "price-asc") {
+      setSortBy({ sortBy: sortBy, order: "asc" });
+    }
+    if (e.target.value === "price-desc") {
+      setSortBy({ sortBy: sortBy, order: "desc" });
+    }
+  };
 
   useEffect(() => {
     axios

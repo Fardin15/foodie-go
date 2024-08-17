@@ -18,10 +18,9 @@ const Products = () => {
   };
 
   // function for category filter
-
-  // const handelFilterByCategory = (e) => {
-  //   setCategory(e.target.value);
-  // };
+  const handelFilterByCategory = (e) => {
+    setCategory(e.target.value);
+  };
 
   // function for category filter
   const handelSortBy = (e) => {

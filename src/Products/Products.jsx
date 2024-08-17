@@ -35,20 +35,20 @@ const Products = () => {
   //   }
   // };
 
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       `${
-  //         import.meta.env.VITE_api_url
-  //       }/products?page=${page}&limit=8&search=${search}&category=${category}&minPrice=${range}&sortBy=${
-  //         sortBy.sortBy
-  //       }&order=${sortBy.order}`
-  //     )
-  //     .then((data) => {
-  //       setMetaData(data.data);
-  //       setProducts(data.data.products);
-  //     });
-  // }, [page, search, category, range, sortBy]);
+  useEffect(() => {
+    axios
+      .get(
+        `${
+          import.meta.env.VITE_api_url
+        }/products?page=${page}&limit=8&search=${search}&category=${category}&minPrice=${range}&sortBy=${
+          sortBy.sortBy
+        }&order=${sortBy.order}`
+      )
+      .then((data) => {
+        setMetaData(data.data);
+        setProducts(data.data.products);
+      });
+  }, [page, search, category, range, sortBy]);
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_api_url}/category`).then((data) => {

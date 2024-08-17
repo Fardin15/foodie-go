@@ -39,7 +39,7 @@ const Navbar = () => {
             role="button"
             className="btn btn-ghost btn-circle avatar"
           >
-            <div className="w-10 rounded-full bg-lime-400">
+            <div className="w-10 rounded-full bg-green-400">
               <h1 className="text-xl p-1">
                 {user ? user?.displayName.charAt(0).toUpperCase() : "N/A"}
               </h1>

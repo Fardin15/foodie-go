@@ -50,11 +50,11 @@ const Products = () => {
   //     });
   // }, [page, search, category, range, sortBy]);
 
-  // useEffect(() => {
-  //   axios.get(`${import.meta.env.VITE_api_url}/category`).then((data) => {
-  //     setCategories(data.data);
-  //   });
-  // }, []);
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_api_url}/category`).then((data) => {
+      setCategories(data.data);
+    });
+  }, []);
 
   return (
     <div>

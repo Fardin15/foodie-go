@@ -136,7 +136,7 @@ const Products = () => {
               }}
               key={index}
               className={`join-item btn ${
-                page === index + 1 ? "bg-blue-500 text-white" : ""
+                page === index + 1 ? "bg-green-400 text-white" : ""
               }`}
             >
               {index + 1}

@@ -6,6 +6,7 @@ import Home from "./Home/Home";
 import Register from "./Register/Register";
 import Login from "./Login/Login";
 import AuthProvider from "./Providers/AuthProvider";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Home></Home>,
+    element: (
+      <PrivateRoute>
+        <Home></Home>
+      </PrivateRoute>
+    ),
   },
   {
     path: "/register",
